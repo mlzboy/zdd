@@ -1,10 +1,15 @@
 class RenameLostToCategories < ActiveRecord::Migration
   def self.up
-    rename_column :categories, :lost, :lack
-    
+    create_table "categories", :force => true do |t|
+      t.string   "name"
+      t.boolean  "hidden"
+      t.boolean  "lack"
+      t.datetime "created_at"
+      t.datetime "updated_at"
+    end    
   end
 
   def self.down
-    rename_column :categories, :lack, :lost
+    drop_table "categories"
   end
 end

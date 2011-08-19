@@ -1,9 +1,9 @@
 source 'http://rubygems.org'
 gem 'whenever'
 gem 'colorize', '0.5.8'
-#gem 'sunspot_rails', :git => 'git://github.com/mlzboy/sunspot.git'
+gem 'sunspot_rails', :git => 'git://github.com/mlzboy/sunspot.git'
 
-gem 'sunspot_rails', '~> 1.2.1'
+#gem 'sunspot_rails', '~> 1.2.1'
 gem 'will_paginate', '3.0.pre'
 gem 'oauth'
 gem 'oauth_china'

@@ -1,3 +1,15 @@
+GIT
+  remote: git://github.com/mlzboy/sunspot.git
+  revision: db9ded13f6c6ac51fbd934a6c24124da289b2178
+  specs:
+    sunspot (1.2.1)
+      escape (= 0.0.4)
+      pr_geohash (~> 1.0)
+      rsolr (= 0.12.1)
+    sunspot_rails (1.2.1)
+      nokogiri
+      sunspot (= 1.2.1)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -78,13 +90,6 @@ GEM
     rdoc (3.9.2)
     rsolr (0.12.1)
       builder (>= 2.1.2)
-    sunspot (1.2.1)
-      escape (= 0.0.4)
-      pr_geohash (~> 1.0)
-      rsolr (= 0.12.1)
-    sunspot_rails (1.2.1)
-      nokogiri
-      sunspot (= 1.2.1)
     thor (0.14.6)
     treetop (1.4.10)
       polyglot
@@ -109,6 +114,6 @@ DEPENDENCIES
   oauth
   oauth_china
   rails (= 3.0.9)
-  sunspot_rails (~> 1.2.1)
+  sunspot_rails!
   whenever
   will_paginate (= 3.0.pre)

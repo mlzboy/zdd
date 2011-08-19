@@ -7,7 +7,7 @@ class Post < ActiveRecord::Base
   #  indexes :demand #model的一个字段 indexes就会检索这个字段
   #end
   searchable :auto_index => true, :auto_remove =>true do
-    text :demand,:lack_list,:hold_list,:area_list
+    text :demand,:stored=>true
     #time :updated_at
   end
 end
