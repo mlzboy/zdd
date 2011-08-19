@@ -1,0 +1,91 @@
+<%= form_for @post do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :lack_list,"缺什么" %><br />
+    <%= f.text_field :lack_list %><%=raw gen_lacks_html($lacks)%>
+  </p>
+  <p>
+    <%= f.label :hold_list,"有什么" %><br />
+    <%= f.text_field :hold_list %><%=raw gen_holds_html($holds)%>
+  </p>
+
+  <p>
+    <%= f.label :demand,"具体要求(控制在100字内)" %><br />
+    <%= f.text_area :demand ,:rows=>5%>
+  </p>
+  <p>
+    <%= f.label :area,"所在地" %><br />
+    <%= f.text_field :area_list %>
+    &nbsp;&nbsp;<a href='###' class='gen_areas_html'>北京</a>
+    &nbsp;&nbsp;<a href='###' class='gen_areas_html'>上海</a>
+    &nbsp;&nbsp;<a href='###' class='gen_areas_html'>广州</a>
+    &nbsp;&nbsp;<a href='###' class='gen_areas_html'>深圳</a>
+    &nbsp;&nbsp;<a href='###' class='gen_areas_html'>杭州</a>
+    &nbsp;&nbsp;<a href='###' class='gen_areas_html'>成都</a>
+  </p>
+
+  </p>
+  <p>
+    <%= f.label :qq,"QQ" %><br />
+    <%= f.text_field :qq %>
+  </p>
+  <p>
+    <%= f.label :mobile,"手机" %><br />
+    <%= f.text_field :mobile %>
+  </p>
+  <p>
+    <%= f.label :contact,"其它联系方式(blog等)" %><br />
+    <%= f.text_area :contact,:rows=>5%>
+  </p>
+  <p><%= f.submit "创建"%></p>
+<% end %>
+<script type="text/javascript">
+  $(function(){
+  //alert("dd");
+  $("a.gen_lacks_html").click(function(){
+    var original=$("#post_lack_list").val().trim();
+    var str;
+    if (original.length==0)
+    {
+      str=$(this).text();
+    }
+    else
+    {
+      str=original+" "+$(this).text();
+    }
+    var tags=str.split(/[ 　,;，；]+/).unique().join(",");
+    $("#post_lack_list").val(tags);
+  })
+  
+  $("a.gen_holds_html").click(function(){
+    var original=$("#post_hold_list").val().trim();
+    var str;
+    if (original.length==0)
+    {
+      str=$(this).text();
+    }
+    else
+    {
+      str=original+" "+$(this).text();
+    }
+    var tags=str.split(/[ 　,;，；]+/).unique().join(",");
+    $("#post_hold_list").val(tags);
+  })  
+  });
+  
+  $("a.gen_areas_html").click(function(){
+    $("#post_area_list").val($(this).text());
+  })
+  
+     Array.prototype.unique = function () {
+        var arrVal = this;
+        var uniqueArr = [];
+        for (var i = arrVal.length; i--; ) {
+            var val = arrVal[i];
+            if ($.inArray(val, uniqueArr) === -1) {
+                uniqueArr.unshift(val);
+            }
+        }
+        return uniqueArr;
+    }
+</script>

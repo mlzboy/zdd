@@ -1,0 +1,16 @@
+<%= form_for @category do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :hidden %><br />
+    <%= f.check_box :hidden %>
+  </p>
+  <p>
+    <%= f.label :lack %><br />
+    <%= f.check_box :lack %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

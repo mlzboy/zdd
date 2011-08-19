@@ -1,0 +1,74 @@
+<style type="text/css" media="screen">
+<!-- /* PR-CSS */
+table td,th {border-bottom:1px solid #999;padding:4px;}
+th{text-align:right;padding:0px;width:70px;}
+td span{display:block;float:right;width:100%;overflow:hidden;}
+td div{float:left;height:25px;margin-right:15px;white-space:nowrap;border:0px;}
+#search {float:right;margin-top:-50px;width:100%;}
+.box{width:250px;margin-left:80px;float:left;}
+-->
+</style>
+<% title "搜索"%>
+<form name="form1" method="post" action="/search">
+<div id="search">
+  <input type="text" name="keyword" class="box" /><input type="submit" name="btnSearch" value="搜索" />
+</div>
+<table cellspacing="0" width="100%">
+  <tr>
+    <th>缺什么：</th>
+    <td>
+<span>
+<%Tag.lacks.each do |lack|%>
+<div><label><%=check_box_tag "lacks[]",value="#{lack.name}",check=false%><%=lack.name%></label></div>
+<%end%>
+</span>
+<span class="clear"></span>
+    </td>
+  </tr>
+  <tr>
+    <th>有什么：</th>
+    <td>
+<%Tag.holds.each do |hold|%>
+<div><label><%=check_box_tag "lacks[]",value="#{hold.name}",check=false%><%=hold.name%></label></div>
+<%end%>			
+    </td>
+  </tr>
+  <tr>
+    <th>地区：</th>
+    <td>
+<%Tag.areas.each do |area|%>
+<div><label><%=check_box_tag "lacks[]",value="#{area.name}",check=false%><%=area.name%></label></div>
+<%end%>		
+    </td>
+  </tr>
+<!--<tr><td colspan="2" style="border-bottom-width:0px;text-align:right;"><input type="submit" name="btnSearch" value="搜索" /></td></tr>-->
+</table>
+</form>
+<br />
+<br />
+<table cellpadding="5" cellspacing="0">
+  <tr>
+    <th>找什么</th>
+    <th>有什么</th>
+    <th>地区</th>
+    <th>要求</th>
+    <th>发起人</th>
+    <th>QQ</th>
+    <th>手机</th>
+    <th>发布时间</th>
+    <th>操作</th>
+  </tr>
+  <% for post in @posts %>
+    <tr>
+      <td><%= link_to post.lack_list,"/search?lacks=#{post.lack_list}",:class=>"tags" %></td>
+      <td><%= link_to post.hold_list,"/search?holds=#{post.hold_list}",:class=>"tags" %></td>
+      <td><%= link_to post.area_list,"/search?areas=#{post.area_list}",:class=>"tags" %></td>
+      <td><%= post.demand %></td>
+      <td><%= post.user.username %></td>
+      <td><%= post.qq %></td>
+      <td><%= post.mobile %></td>
+      <td><%= post.created_at.strftime("%Y-%m-%d")%></td>
+      <td><%= link_to "查看详情", post %>&nbsp;<%= link_to "修改", edit_post_path(post) %><%= link_to "Destroy", post, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>

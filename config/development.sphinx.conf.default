@@ -1,0 +1,19 @@
+indexer
+{
+        mem_limit                               = 32M
+}
+
+
+searchd
+{
+        port                                    = 3312
+        log                                             = /var/log/sphinxsearch/searchd.log
+        query_log                               = /var/log/sphinxsearch/query.log
+        read_timeout                    = 5
+        max_children                    = 30
+        pid_file                                = /var/run/searchd.pid
+        max_matches                             = 1000
+        seamless_rotate                 = 1
+        preopen_indexes                 = 0
+        unlink_old                              = 1
+}
