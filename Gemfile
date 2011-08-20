@@ -1,4 +1,8 @@
 source 'http://rubygems.org'
+gem "geocoder"
+gem 'sqlite3-ruby', :require => 'sqlite3'
+gem 'gmaps4rails'
+gem 'rails-backup-migrate'
 gem 'whenever'
 gem 'colorize', '0.5.8'
 gem 'sunspot_rails', :git => 'git://github.com/mlzboy/sunspot.git'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110816063603) do
+ActiveRecord::Schema.define(:version => 20110820070919) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -29,6 +29,11 @@ ActiveRecord::Schema.define(:version => 20110816063603) do
     t.datetime "updated_at"
     t.boolean  "pass",       :default => false
     t.integer  "user_id"
+    t.string   "ip"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.boolean  "gmaps"
+    t.string   "address"
   end
 
   create_table "taggings", :force => true do |t|

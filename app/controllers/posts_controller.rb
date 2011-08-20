@@ -5,6 +5,8 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    @json=Post.where("latitude is not null and longitude is not null").all.to_gmaps4rails
+    #@json=[Post.last].to_gmaps4rails
   end
 
   def show
@@ -24,7 +26,19 @@ class PostsController < ApplicationController
     areas=params[:post]["area_list"].gsub(/[ ,;，；]+/,"").strip()
     @post.area_list=areas
     @post.user_id=session[:user_id]
-    
+    @post.ip=request.remote_ip
+    #====仅在开发时使用
+    if @post.ip=="127.0.0.1" or @post.ip=="localhost"
+      @post.address="115.210.222.177"
+    end
+    #=======
+    #address字段用于存放ip或是人式输入的地址，根据此字段查出以对应的经纬坐标，查询坐标的工作要在后台异步进行
+
+    #@post.address=request.location.address
+    #@post.address="115.210.222.177"
+    logger.error("==================================")
+    logger.error(@post.ip)
+    logger.error(@post.address)
                         
     if @post.save
       redirect_to @post, :notice => "Successfully created post."
