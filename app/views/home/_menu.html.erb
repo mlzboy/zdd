@@ -1,6 +1,12 @@
       <div id="menu">
-        <div><a href="/logout">退出</a></div>
-        <div><a href="/logout"><%=session[:username]%></a></div>
+        <div>
+        <% if user_signed_in? %>
+          <a href="/logout">退出</a>
+        <%else%>
+          <a href="/login">登录</a>
+        <%end%>
+        </div>
+        <div><a href="/settings">设置</a></div>
         <div><a href="/search">搜索</a></div>
         <div><a href="/posts">英雄贴</a></div>
       </div>

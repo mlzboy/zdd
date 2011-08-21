@@ -1,4 +1,7 @@
 source 'http://rubygems.org'
+
+gem 'devise'
+gem 'devise_invitable'
 gem "geocoder"
 gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'gmaps4rails'
@@ -8,7 +11,8 @@ gem 'colorize', '0.5.8'
 gem 'sunspot_rails', :git => 'git://github.com/mlzboy/sunspot.git'
 
 #gem 'sunspot_rails', '~> 1.2.1'
-gem 'will_paginate', '3.0.pre'
+gem "kaminari"
+#gem 'will_paginate', '3.0.pre'
 gem 'oauth'
 gem 'oauth_china'
 #gem 'thinking-sphinx','2.0.3'

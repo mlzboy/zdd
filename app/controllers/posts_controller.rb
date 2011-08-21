@@ -4,9 +4,11 @@ class PostsController < ApplicationController
 
 
   def index
-    @posts = Post.all
+    #@posts = Post.all
+    @posts= Post.where(:pass=>false).order(:created_at).page params[:page]
     @json=Post.where("latitude is not null and longitude is not null").all.to_gmaps4rails
     #@json=[Post.last].to_gmaps4rails
+    render :layout=>"map"
   end
 
   def show

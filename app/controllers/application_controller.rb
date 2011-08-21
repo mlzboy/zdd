@@ -1,4 +1,11 @@
 class ApplicationController < ActionController::Base
-  include ControllerAuthentication
   protect_from_forgery
+  layout :specify_layout
+
+  protected 
+
+    def specify_layout
+      #controller_name == 'registrations' && action_name == 'edit' ? 'settings' : 'devise'
+      controller_name == 'registrations' ? 'settings' : 'application'
+    end
 end

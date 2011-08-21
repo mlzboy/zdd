@@ -1,20 +1,30 @@
 Zdd::Application.routes.draw do
+  root :to => "home#index"
+  match "settings" => "settings#index"
+  get "settings/index"
+
+  get "settings/card"
+
+  get "settings/resume"
+
+  get "settings/extra"
+
+  #get "settings/account" =>"registrations#edit"
+
+  get "settings/contact"
+
+  #devise_for :users
+  devise_for :users,  :controllers => { :registrations => "registrations" } do
+  #devise_for :users do
+    get "/register", :to => "devise/registrations#new" 
+    get "/login", :to => "devise/sessions#new" 
+    get "/logout", :to => "devise/sessions#destroy"
+    get "/settings/account", :to=>"registrations#edit"
+  end
   resources :categories
 
   resources :posts
   match 'search' => 'home#search', :as => :search
-  root :to => "home#index"
-  match 'user/edit' => 'users#edit', :as => :edit_current_user
-
-  match 'signup' => 'users#new', :as => :signup
-
-  match 'logout' => 'sessions#destroy', :as => :logout
-
-  match 'login' => 'sessions#new', :as => :login
-
-  resources :sessions
-
-  resources :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

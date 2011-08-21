@@ -9,6 +9,8 @@
   </head>
   <body>
     <div id="container">
+      <!--<p class="notice"><%= notice %></p>-->
+      <!--<p class="alert"><%= alert %></p>-->
       <%= render :partial => 'home/menu' %>
       <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, :id => "flash_#{name}" %>
@@ -17,5 +19,6 @@
       <%= yield %>
 
     </div>
+    <%= render :partial => 'home/footer' %>
   </body>
 </html>

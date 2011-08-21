@@ -20,7 +20,7 @@ a {
 }
 
 #container {
-  width: 75%;
+  width: 872px;/*lexus modifed from 100% to 960px;*/
   margin: 0 auto;
   background-color: #FFF;
   padding: 16px 40px;
@@ -34,12 +34,26 @@ a {
   padding: 0 0 7px 0;
   border-bottom: solid 1px black;
 }
+#menu a:hover{color:orange;}
 #menu div
 {
   float:right;
   margin-right:15px;
 }
-
+#footer{
+  width: 872px;/*lexus modifed from 100% to 960px;*/
+  /*background-color: #FFF;*/
+  /*padding: 16px 40px;*/
+  /*border: solid 1px black;*/
+  /*margin-top: 20px;*/
+  /*position:relative;*/
+  min-height:10px;
+  margin:0 auto;
+}
+#footer ul{width:100%;float:left;margin:6px 0 0 0;padding:0;}
+#footer li{float:right;padding:0 0 0 10px;margin:0;list-style-type:none;color:#999;font-size:12px;}
+#footer a{color:rgba(255, 255, 255, 0.3);}
+#footer a:hover{color:orange;}
 
 a.tags{
   color:#000;
@@ -66,7 +80,36 @@ a:hover.tags{
 .fieldWithErrors {
   display: inline;
 }
+#error_explanation
+{
+  width: 400px;
+  border: 2px solid #CF0000;
+  padding: 0px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+  font-size: 12px;  
+}
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 10px;
+  font-size: 12px;
+  margin: 0;
+  background-color: #c00;
+  color: #fff;
+}
+#error_explanation p {
+  margin: 8px 10px;
+}
 
+#error_explanation ul {
+  margin: 5px,0 0 0;
+  text-align:left;
+}
+#error_explanation li {
+  padding:5px;
+}
 .error_messages {
   width: 400px;
   border: 2px solid #CF0000;

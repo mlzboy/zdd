@@ -8,7 +8,7 @@ Bundler.require(:default, Rails.env) if defined?(Bundler)
 
 module Zdd
   class Application < Rails::Application
-    config.autoload_paths << "#{config.root}/lib"    # Settings in config/environments/* take precedence over those specified here.
+    # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
@@ -28,9 +28,10 @@ module Zdd
      config.time_zone = 'Beijing'
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
-    # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
-    # config.i18n.default_locale = :de
-
+     #config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
+     #config.i18n.default_locale = :de
+    config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
+    config.i18n.default_locale = 'zh-CN'
     # JavaScript files you want as :defaults (application.js is always included).
     config.action_view.javascript_expansions[:defaults] = %w()
 

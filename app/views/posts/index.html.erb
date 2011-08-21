@@ -18,7 +18,7 @@
       <td><%= link_to post.hold_list,"/search?holds=#{post.hold_list}",:class=>"tags" %></td>
       <td><%= link_to post.area_list,"/search?areas=#{post.area_list}",:class=>"tags" %></td>
       <td><%= post.demand %></td>
-      <td><%= post.user.username %></td>
+      <td><%#= post.user.username %></td>
       <td><%= post.qq %></td>
       <td><%= post.mobile %></td>
       <td><%= post.created_at.strftime("%Y-%m-%d")%></td>
@@ -26,6 +26,6 @@
     </tr>
   <% end %>
 </table>
-
+<%= paginate @posts, :left => 1, :right => 3 %>
 <p><%= link_to "New Post", new_post_path %></p>
 <%= gmaps4rails(@json) %>

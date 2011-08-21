@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+    <%= stylesheet_link_tag "application" %>
+    <%= javascript_include_tag "jquery.min","jquery_ujs" %>
+    <%= csrf_meta_tag %>
+    <%= yield(:head) %>
+<style type="text/css">
+#settings_menu{border-right:solid 1px #999;width:115px;float:left;}
+#settings_menu li{padding:5px;list-style-type:none}
+th{text-align:right;width:240px;}
+hr{border-width:0 0 1px 0;border-style:solid;border-color:1px;}
+</style>
+  </head>
+  <body>
+    <div id="container">
+      <!--<p class="notice"><%= notice %></p>-->
+      <!--<p class="alert"><%= alert %></p>-->
+      <%= render :partial => 'home/menu' %>
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+      <% end %>
+      <%= content_tag :h1, yield(:title) if show_title? %>
+      <h1>设置</h1>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="120" valign="top">
+      <div id="settings_menu">
+        <ul>
+          <li id="index"><a href="/settings/index">基本资料</a></li>
+          <li id="contact"><a href="/settings/contact">联络方式</a></li>
+          <li id="extra"><a href="/settings/extra">拓展资料</a></li>
+          <hr />
+          <li id="card"><a href="/settings/card">个人名片</a></li>
+          <li id="resume"><a href="/settings/resume">成长履历</a></li>
+          <hr />
+          <li id="account"><a href="/settings/account">账号设置</a></li>
+        </ul>
+      </div>
+    </td>
+    <td align="center">
+<%= yield %>
+    </td>
+  </tr>
+</table>
+
+ 
+
+
+
+      
+    </div>
+    <%= render :partial => 'home/footer' %>
+  </body>
+</html>
+<script type="text/javascript">
+  $(function(){
+    $("#<%=@view_name%>").css("list-style-type","disc");
+  });
+</script>

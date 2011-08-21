@@ -1,10 +1,14 @@
 #coding:utf-8
 class HomeController < ApplicationController
-  #before_filter :login_required, :except => [:index]
+  before_filter :authenticate_user!, :except => [:index]
   def index
+    @posts= Post.where(:pass=>false).order(:created_at).page params[:page]
+    @json=Post.where("latitude is not null and longitude is not null").all.to_gmaps4rails
+    #@json=[Post.last].to_gmaps4rails
+    render :layout=>"map"
   end
   def search
-    #@posts=Post.all
+    @posts=Post.all
     render :layout=>"search"
   end
   def search2
