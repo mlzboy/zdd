@@ -5,7 +5,7 @@ class HomeController < ApplicationController
     @posts= Post.where(:pass=>false).order(:created_at).page params[:page]
     @json=Post.where("latitude is not null and longitude is not null").all.to_gmaps4rails
     #@json=[Post.last].to_gmaps4rails
-    render :layout=>"map"
+    render :layout=>"map4index"
   end
   def search
     @posts=Post.all

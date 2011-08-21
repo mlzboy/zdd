@@ -1,13 +1,17 @@
       <div id="menu">
-        <div>
-        <% if user_signed_in? %>
-          <a href="/logout">退出</a>
-        <%else%>
-          <a href="/login">登录</a>
-        <%end%>
+        <%#if user_signed_in?%>
+        <div style="float:left;color:gray;">
+          <a href="/" style="color:gray">创客汇</a>
         </div>
+        <%#end%>
+        
+        <% if user_signed_in? %>
+        <div><a href="/logout">退出</a></div>
         <div><a href="/settings">设置</a></div>
         <div><a href="/search">搜索</a></div>
         <div><a href="/posts">英雄贴</a></div>
+        <%else%>
+        <div><a href="/login">登录</a></div>
+        <%end%>
       </div>
       <div class="clear"></div>
