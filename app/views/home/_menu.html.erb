@@ -1,17 +1,41 @@
       <div id="menu">
-        <%#if user_signed_in?%>
-        <div style="float:left;color:gray;">
+        <div id="title" style="float:left;color:gray;">
           <a href="/" style="color:gray">创客汇</a>
-        </div>
-        <%#end%>
-        
-        <% if user_signed_in? %>
-        <div><a href="/logout">退出</a></div>
-        <div><a href="/settings">设置</a></div>
-        <div><a href="/search">搜索</a></div>
-        <div><a href="/posts">英雄贴</a></div>
-        <%else%>
-        <div><a href="/login">登录</a></div>
-        <%end%>
+        </div>&nbsp;  
+        <div id="logout"><a href="/logout">退出</a></div>
+        <div id="settings"><a href="/settings">设置</a></div>
+        <div id="search"><a href="/search">搜索</a></div>
+        <div id="posts"><a href="/posts">英雄贴</a></div>
+        <div id="login"><a href="/login">登录</a></div>
       </div>
       <div class="clear"></div>
+      <script type="text/javascript">
+        $(function(){
+          <%
+          r=""
+          c=controller.controller_name
+          a=controller.action_name
+          unless user_signed_in?
+            if c=="home" and a=="index"
+              r << '$("#login").show();'
+            elsif c=="registrations"
+              r << '$("#title").show();'
+              r << '$("#login").hide();'
+            else
+              r << '$("#title").show();'
+            end
+          else
+              r << '$("#title").show();'
+              r << '$("#login").hide();'
+              r << '$("#logout").show();'
+              r << '$("#settings").show();'
+              r << '$("#search").show();'
+              r << '$("#posts").show();'
+          end
+          %>
+          //<%=raw c%>
+          //<%=raw a%>
+          <%=raw r%>
+        });
+
+      </script>

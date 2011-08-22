@@ -201,4 +201,10 @@ Devise.setup do |config|
   #   manager.intercept_401 = false
   #   manager.default_strategies(:scope => :user).unshift :some_external_strategy
   # end
+  
+# ==> Configuration for :invitable
+# The period the generated invitation token is valid, after
+# this period, the invited resource won't be able to accept the invitation.
+# When invite_for is 0 (the default), the invitation won't expire.
+ #config.invite_for = 2.weeks
 end

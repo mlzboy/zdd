@@ -2,10 +2,18 @@
 class HomeController < ApplicationController
   before_filter :authenticate_user!, :except => [:index]
   def index
-    @posts= Post.where(:pass=>false).order(:created_at).page params[:page]
-    @json=Post.where("latitude is not null and longitude is not null").all.to_gmaps4rails
-    #@json=[Post.last].to_gmaps4rails
-    render :layout=>"map4index"
+    unless user_signed_in?
+      #@posts= Post.where(:pass=>false).order(:created_at).page params[:page]
+      @json=Post.where("latitude is not null and longitude is not null").all.to_gmaps4rails
+      #@json=[Post.last].to_gmaps4rails
+      render :layout=>"map"
+    else
+      #@posts = Post.all
+     @posts= Post.where(:pass=>false).order(:created_at).page params[:page]
+     @json=Post.where("latitude is not null and longitude is not null").all.to_gmaps4rails
+     #@json=[Post.last].to_gmaps4rails
+     render :layout=>"map",:template=>"posts/index"     
+    end
   end
   def search
     @posts=Post.all

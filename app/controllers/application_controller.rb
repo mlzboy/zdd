@@ -6,6 +6,6 @@ class ApplicationController < ActionController::Base
 
     def specify_layout
       #controller_name == 'registrations' && action_name == 'edit' ? 'settings' : 'devise'
-      controller_name == 'registrations' ? 'settings' : 'application'
+      controller_name == 'registrations' && (action_name == 'edit' or  action_name== 'update') ? 'settings' : 'application'
     end
 end

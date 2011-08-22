@@ -1,5 +1,5 @@
 source 'http://rubygems.org'
-
+gem 'simple_form'
 gem 'devise'
 gem 'devise_invitable'
 gem "geocoder"
@@ -21,7 +21,7 @@ gem "mocha"
 gem "nifty-generators"
 gem 'jquery-rails'
 gem 'rails', '3.0.9'
-
+gem 'settingslogic'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

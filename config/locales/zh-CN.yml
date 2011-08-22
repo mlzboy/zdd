@@ -118,5 +118,7 @@
             password:
               blank: "新密码不能为空"
               confirmation: "新密码确认框输入错误"
-              
+              too_short: "太短"
+            email:
+              taken: "该邮件地址已被使用"
               
